@@ -1,0 +1,338 @@
+/* ------------------------------------------------- */
+/* -----------CSS CITY SKYLINE ARTPAGE-------------- */
+/* ---------------------MJC------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------------- */
+/* ----------------------SCENE---------------------- */
+/* ------------------------------------------------- */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.landscape {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background-color: #0A0021; 
+  overflow: hidden;
+  animation: backgroundShift 10s infinite;
+}
+
+/* SUN --------------------------------------------- */
+.sun {
+  position: absolute;
+  bottom: 0; 
+  left: calc(50% - 40px); 
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #ffdb4d, transparent);
+  animation: riseAndFall 10s infinite; 
+}
+/* END OF SUN -------------------------------------- */
+
+/* TOWERS -------------------------------------------*/
+.foreground_tower,
+.midground_tower,
+.background_tower {
+  position: absolute;
+  bottom: 0;
+  height: 100vh;
+}
+
+.foreground_tower:nth-child(odd) {
+  left: 0; 
+}
+
+.foreground_tower:nth-child(even) {
+  right: 0; 
+}
+
+.midground_tower:nth-child(odd) {
+  left: calc(50% - 655px); 
+}
+
+.midground_tower:nth-child(even) {
+  right: calc(50% - 655px); 
+}
+
+.background_tower:nth-child(odd) {
+  left: calc(50% - 425px);
+}
+
+.background_tower:nth-child(even) {
+  right: calc(50% - 425px); 
+}
+
+.foreground_tower {
+  width: 250px; 
+  background-color: #000; 
+}
+
+.midground_tower {
+  width: 180px; 
+  height: 80vh; 
+  background-color: #000; 
+}
+
+.background_tower {
+  width: 120px; 
+  height: 40vh; 
+  background-color: #222; 
+}
+
+/* START OF WINDOWS -------------------------------- */
+
+/* Window grid for foreground tower */
+.foreground_tower .windows-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: 2px;
+  position: relative; /*Important for overlays (refer to dual classes)*/
+  width: calc(100% - 15px); 
+  height: calc(100% + 4px); 
+  justify-content: center; 
+  align-items: center; 
+  margin-left: 8px;
+}
+
+/* Window grid for midground tower */
+.midground_tower .windows-grid{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  grid-template-rows: repeat(26, 1fr); 
+  gap: 3px;
+  position: relative;
+  width: calc(100% - 9px);
+  height: calc(100% + 190px);
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  margin-top: 4px;
+
+}
+
+/* Window grid for background tower */
+.background_tower .windows-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  grid-template-rows: repeat(36, 1fr); 
+  gap: 1px;
+  position: relative;
+  width: calc(100% - 1px);
+  height: calc(100% + 600px);
+  justify-content: center;
+  align-items: center;
+  margin-left: 1px;
+  margin-top: 1px;
+}
+
+/* Foreground tower windows */
+.foreground_tower .window {
+  width: calc((238px) / 4);
+  height: calc((100% + 860px) / 12);
+  background-color: #FFD700;
+  animation: backgroundShift 10s infinite; 
+
+}
+
+/* Midground tower windows */
+.midground_tower .window {
+  width: calc((100% + 83px) / 4); 
+  height: calc((100% + 385px) / 12); 
+  background-color: #FFD700;
+  animation: backgroundShift 10s infinite; 
+
+}
+
+/* Background tower windows */
+.background_tower .window {
+  width: calc((100% + 51px) / 4); 
+  height: calc((100% + 282px) / 12); 
+  background-color: #FFD700;
+  animation: backgroundShift 10s infinite; 
+
+}
+
+/* Window hover effect */
+.window:hover {
+  transform: scale(1.1); /* Scale up the window */
+  background-color: yellow !important; /* Change background color to yellow */
+}
+
+/* Foreground tower windows hover effect */
+.foreground_tower .window:hover {
+  animation-play-state: paused; /* Pause the animation on hover */
+}
+
+/* Midground tower windows hover effect */
+.midground_tower .window:hover {
+  animation-play-state: paused; /* Pause the animation on hover */
+}
+
+/* Background tower windows hover effect */
+.background_tower .window:hover {
+  animation-play-state: paused; /* Pause the animation on hover */
+}
+
+/* END OF WINDOWS ---------------------------------- */
+/* END OF TOWERS ----------------------------------- */
+
+/* STREET ------------------------------------------ */
+.street {
+  position: absolute;
+  bottom: 0;
+  width: 100%; 
+  height: 100px; 
+  background-color: #000; 
+}
+
+/* END OF STREET ----------------------------------- */
+/* MAN --------------------------------------------- */
+.stickman {
+  position: absolute;
+  bottom: 200px; /* Adjust the position as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+}
+
+.stickman > div {
+  position: absolute;
+  background-color: black;
+}
+
+.head {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  top: -30px;
+  left: -15px;
+}
+
+.body {
+  width: 10px;
+  height: 70px;
+  top: 0;
+  left: -5px;
+}
+
+.left-arm, .right-arm {
+  width: 50px;
+  height: 10px;
+  top: 10px;
+}
+
+.left-arm {
+  transform: rotate(5deg);
+  transform-origin: bottom left;
+  left: -45px;
+}
+
+.right-arm {
+  transform: rotate(-5deg);
+  transform-origin: bottom right;
+  right: -45px;
+}
+
+.left-leg, .right-leg {
+  width: 20px;
+  height: 60px;
+  top: 70px;
+}
+
+.left-leg {
+  left: 0;
+}
+
+.right-leg {
+  right: 0;
+}
+
+.stickman:hover{
+  transform: scale(2);
+}
+
+/* END OF MAN -------------------------------------- */
+
+/* ------------------------------------------------- */
+/* ----------------------END------------------------ */
+/* ------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------- */
+/* --------------------ANIMATIONS-------------------- */
+/* -------------------------------------------------- */
+
+/* SUN RISE AND FALL ANIMATION ---------------------- */
+@keyframes riseAndFall {
+  0%, 100% {
+    bottom: 0; 
+  }
+  50% {
+    bottom: calc(100vh - 80px); 
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+/* END OF SUN RISE AND FALL ANIMATION ----------------------- */
+/* BACKGROUND COLOR SHIFT ANIMATION ------------------ */
+
+@keyframes backgroundShift {
+  0%, 100% { /*This allows for a full loop (0%,100%)*/
+    background: #0A0021; 
+  }
+  15% {
+    background: #FFD700;
+  }
+  25% {
+    background: #87CEEB;
+  }
+  65% {
+    background: #87CEEB;
+  }
+  70% {
+    background: #FF6347;
+  }
+  90% {
+    background: #0A0021;
+  }
+}
+/* BACKGROUND ANIMATION END ------------------------- */
+
+/* -------------------------------------------------- */
+/* ------------------------END----------------------- */
+/* -------------------------------------------------- */
+
+
+
+
+
+
+
+
+/* ------------------------------------------------- */
+/* -----------CSS CITY SKYLINE ARTPAGE-------------- */
+/* ---------------------MJC------------------------- */
